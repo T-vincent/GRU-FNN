@@ -1,0 +1,13 @@
+# 二进制文件：禁止换行符转换与文本 diff
+*.lib   binary
+*.a     binary
+*.obj   binary
+*.out   binary
+*.pdf   binary
+*.docx  binary
+*.pptx  binary
+*.png   binary
+*.jpg   binary
+*.zip   binary
+*.tse   binary
+*.cus   binary

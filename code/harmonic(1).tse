@@ -1,0 +1,1586 @@
+version = 4.2
+
+//
+// Saved by sw version: 2026.2
+//
+
+model "harmonic" {
+    configuration {
+        hil_device = "HIL404"
+        hil_configuration_id = 3
+        simulation_method = exact
+        simulation_time_step = 1e-06
+        simulation_discret_scaling = 1.0
+        dsp_timer_periods = 100e-6, 50e-3
+        ss_calc_method = "constraint matrix"
+        enb_pole_shift = True
+        enb_gds_oversampling = True
+        show_modes = False
+        device_ao_limit_enable = False
+        reset_analog_outputs_on_sim_stop = True
+        reset_analog_outputs_on_sim_stop_mode = Offset values
+        reset_digital_outputs_on_sim_stop = True
+        vhil_adio_loopback = False
+        dma_enable = False
+        cpl_stb = True
+        enb_dep_sw_detect = False
+        code_section = "internal memory"
+        data_section = "internal memory"
+        sys_sp_rate_1 = 0.0001
+        sys_sp_rate_2 = 0.05
+        sys_real_type_precision = "default"
+        user_real_type_precision = "default"
+        sys_cpu_optimization = "high"
+        user_cpu_optimization = "high"
+        user_cpu_part_option = "default"
+        matrix_based_reduction = True
+        cpl_dynamics_analysis = False
+        export_ss_to_pickle = False
+        ground_scope_core = False
+        dss_num_tol = 1e-15
+        cce_platform = "generic"
+        cce_use_relative_names = False
+        cce_type_mapping_real = "double"
+        cce_type_mapping_uint = "unsigned int"
+        cce_type_mapping_int = "int"
+        cce_platform = "generic"
+        cce_use_relative_names = False
+        cce_type_mapping_real = "double"
+        cce_type_mapping_uint = "unsigned int"
+        cce_type_mapping_int = "int"
+        cce_term_var_location = "local"
+        cce_directory = ""
+        cce_custom_type_int = ""
+        cce_custom_type_uint = ""
+        cce_custom_type_real = ""
+        tunable_params = "component defined"
+        sp_compiler_type = "C compiler"
+        sig_stim = "off"
+        export_resource_list = ""
+        export_dependency_list = ""
+        excluded_resource_list = ""
+        excluded_component_from_locking_list = ""
+        export_out_file = ""
+        export_lock_top_level = True
+        export_encrypt_library = True
+        export_encrypt_resources = True
+        solver_type = "DAE"
+        integration_method = "BDF"
+        max_sim_step = 1e-4
+        simulation_time = 0.6
+        abs_tol = 1e-3
+        rel_tol = 1e-3
+        init_sim_step = 1e-6
+        r_on_sw = 0.001
+        v_on_diode = 0.8
+        data_sampling_rate = 0
+        feedthrough_validation_error_level = warning
+    }
+
+    component Subsystem Root {
+        component "core/Voltage Measurement" Va {
+            execution_rate = "1e-05"
+            override_signal_name = "True"
+            sig_output = "True"
+            signal_name = "Vgrid_A"
+        }
+        [
+            position = 7176, 7928
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Ground" gnd1 {
+        }
+        [
+            position = 6620, 8212
+        ]
+
+        component "core/Voltage Measurement" Vb {
+            execution_rate = "1e-05"
+            override_signal_name = "True"
+            sig_output = "True"
+            signal_name = "Vgrid_B"
+        }
+        [
+            position = 7216, 8024
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" Vc {
+            execution_rate = "1e-05"
+            override_signal_name = "True"
+            sig_output = "True"
+            signal_name = "Vgrid_C"
+        }
+        [
+            position = 7280, 8128
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" Vdc_raw_sensor {
+            execution_rate = "1e-05"
+            override_signal_name = "True"
+            sig_output = "True"
+            signal_name = "Vdc_raw"
+        }
+        [
+            position = 7936, 7940
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/IGBT" IGBT2 {
+            ctrl_src = "Model"
+            execution_rate = "1e-05"
+            model_load_legacy = "1"
+            resistance = "22.5"
+            signal_access = "Public"
+        }
+        [
+            position = 7480, 7804
+            size = 48, 64
+        ]
+
+        component "core/IGBT" IGBT4 {
+            S1 = "2"
+            ctrl_src = "Model"
+            execution_rate = "1e-05"
+            model_load_legacy = "1"
+            resistance = "22.5"
+            signal_access = "Public"
+        }
+        [
+            position = 7648, 7804
+            size = 48, 64
+        ]
+
+        component "core/IGBT" IGBT6 {
+            S1 = "3"
+            ctrl_src = "Model"
+            execution_rate = "1e-05"
+            model_load_legacy = "1"
+            resistance = "22.5"
+            signal_access = "Public"
+        }
+        [
+            position = 7816, 7804
+            size = 48, 64
+        ]
+
+        component "core/IGBT" IGBT7 {
+            S1 = "4"
+            ctrl_src = "Model"
+            execution_rate = "1e-05"
+            model_load_legacy = "1"
+            resistance = "22.5"
+            signal_access = "Public"
+        }
+        [
+            position = 7480, 8036
+            size = 48, 64
+        ]
+
+        component "core/IGBT" IGBT9 {
+            S1 = "5"
+            ctrl_src = "Model"
+            execution_rate = "1e-05"
+            model_load_legacy = "1"
+            resistance = "22.5"
+            signal_access = "Public"
+        }
+        [
+            position = 7648, 8036
+            size = 48, 64
+        ]
+
+        component "core/IGBT" IGBT11 {
+            S1 = "6"
+            ctrl_src = "Model"
+            execution_rate = "1e-05"
+            model_load_legacy = "1"
+            resistance = "22.5"
+            signal_access = "Public"
+        }
+        [
+            position = 7816, 8036
+            size = 48, 64
+        ]
+
+        component "core/Initial Settings" "Initial Settings1" {
+            analog_outputs = "[\'AO2;..Probe1.value;1;1.65;True;0.1;3.2\', \'AO3;..Probe2.value;1;1.65;True;0.1;3.2\', \'AO4;..Probe3.value;1;1.65;True;0.1;3.2\', \'AO1;..Probe4.value;1;1.65;True;0.1;3.2\', \'AO5;..Probe5.value;1;1.65;True;0.1;3.2\']"
+            model_load_legacy = "1"
+        }
+        [
+            position = 6608, 7752
+        ]
+
+        component "core/Gain" Gain1 {
+            gain = "0.002"
+        }
+        [
+            position = 7240, 7928
+        ]
+
+        component "core/Gain" Gain2 {
+            gain = "0.002"
+        }
+        [
+            position = 7276, 8024
+        ]
+
+        component "core/Gain" Gain3 {
+            gain = "0.002"
+        }
+        [
+            position = 7340, 8128
+        ]
+
+        component "core/Probe" Probe1 {
+            override_signal_name = "True"
+            signal_name = "Vgrid_A_AO"
+            signal_type = "voltage"
+        }
+        [
+            position = 7304, 7928
+        ]
+
+        component "core/Probe" Probe2 {
+            override_signal_name = "True"
+            signal_name = "Vgrid_B_AO"
+            signal_type = "voltage"
+        }
+        [
+            position = 7340, 8024
+        ]
+
+        component "core/Probe" Probe3 {
+            override_signal_name = "True"
+            signal_name = "Vgrid_C_AO"
+            signal_type = "voltage"
+        }
+        [
+            position = 7404, 8128
+        ]
+
+        component "core/Gain" Gain4 {
+            gain = "0.0025"
+        }
+        [
+            position = 7996, 7940
+        ]
+
+        component "core/Probe" Probe4 {
+            override_signal_name = "True"
+            signal_name = "Vgrid_Vdc_AO"
+            signal_type = "voltage"
+        }
+        [
+            position = 8060, 7940
+        ]
+
+        component "core/IGBT" IGBT12 {
+            S1 = "4"
+            execution_rate = "1e-05"
+            model_load_legacy = "1"
+            resistance = "22.5"
+            signal_access = "Public"
+        }
+        [
+            position = 7480, 8136
+            scale = 1, -1
+            size = 48, 64
+        ]
+
+        component "core/IGBT" IGBT13 {
+            S1 = "5"
+            execution_rate = "1e-05"
+            model_load_legacy = "1"
+            resistance = "22.5"
+            signal_access = "Public"
+        }
+        [
+            position = 7648, 8136
+            scale = 1, -1
+            size = 48, 64
+        ]
+
+        component "core/IGBT" IGBT14 {
+            S1 = "6"
+            execution_rate = "1e-05"
+            model_load_legacy = "1"
+            resistance = "22.5"
+            signal_access = "Public"
+        }
+        [
+            position = 7816, 8136
+            scale = 1, -1
+            size = 48, 64
+        ]
+
+        component "core/IGBT" IGBT15 {
+            execution_rate = "1e-05"
+            model_load_legacy = "1"
+            resistance = "22.5"
+            signal_access = "Public"
+        }
+        [
+            position = 7480, 7904
+            scale = 1, -1
+            size = 48, 64
+        ]
+
+        component "core/IGBT" IGBT16 {
+            S1 = "2"
+            execution_rate = "1e-05"
+            model_load_legacy = "1"
+            resistance = "22.5"
+            signal_access = "Public"
+        }
+        [
+            position = 7648, 7904
+            scale = 1, -1
+            size = 48, 64
+        ]
+
+        component "core/IGBT" IGBT17 {
+            S1 = "3"
+            execution_rate = "1e-05"
+            model_load_legacy = "1"
+            resistance = "22.5"
+            signal_access = "Public"
+        }
+        [
+            position = 7816, 7904
+            scale = 1, -1
+            size = 48, 64
+        ]
+
+        component "core/Current Measurement" Ia1 {
+            execution_rate = "1e-05"
+            override_signal_name = "True"
+            sig_output = "True"
+            signal_name = "I_dc"
+        }
+        [
+            position = 7996, 7736
+            size = 64, 32
+        ]
+
+        component "core/Gain" Gain5 {
+            gain = "0.05"
+        }
+        [
+            position = 8056, 7668
+        ]
+
+        component "core/Probe" Probe5 {
+            override_signal_name = "True"
+            signal_name = "Vgrid_Idc_AO"
+            signal_type = "current"
+        }
+        [
+            position = 8116, 7668
+        ]
+
+        component "core/Signal Controlled Voltage Source" VA_harmonic_source {
+            execution_rate = "1e-05"
+        }
+        [
+            position = 6668, 7864
+            rotation = down
+            scale = 1, -1
+            size = 64, 32
+        ]
+
+        component "core/Signal Controlled Voltage Source" VB_harmonic_source {
+            execution_rate = "1e-05"
+        }
+        [
+            position = 6668, 7976
+            rotation = down
+            scale = 1, -1
+            size = 64, 32
+        ]
+
+        component "core/Signal Controlled Voltage Source" VC_harmonic_source {
+            execution_rate = "1e-05"
+        }
+        [
+            position = 6668, 8076
+            rotation = down
+            scale = 1, -1
+            size = 64, 32
+        ]
+
+        component "core/Series RLC Branch" R_load {
+            branch_type = "R"
+            resistance = "35"
+        }
+        [
+            position = 8244, 8108
+            rotation = right
+            size = 128, 100
+        ]
+
+        component "core/Diode" DC_freewheel {
+            Rd = "0.001"
+            Vd = "0.8"
+            model_load_legacy = "1"
+            resistance = "80"
+        }
+        [
+            position = 7864, 7988
+            rotation = left
+            size = 64, 32
+        ]
+
+        component "core/Current Measurement" Load_current_sensor {
+            execution_rate = "1e-05"
+            override_signal_name = "True"
+            sig_output = "True"
+            signal_name = "I_load"
+        }
+        [
+            position = 8244, 7916
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Probe" Load_current_probe {
+            override_signal_name = "True"
+            signal_name = "I_Load"
+        }
+        [
+            position = 8340, 7916
+        ]
+
+        component "core/Voltage Measurement" V_load_sensor {
+            execution_rate = "1e-05"
+            override_signal_name = "True"
+            sig_output = "True"
+            signal_name = "V_load"
+        }
+        [
+            position = 8400, 8116
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Probe" Load_voltage_probe {
+            override_signal_name = "True"
+            signal_name = "V_Load"
+        }
+        [
+            position = 8472, 8116
+        ]
+
+        component "core/Current Measurement" Source_current_A {
+            execution_rate = "1e-05"
+            override_signal_name = "True"
+            sig_output = "True"
+            signal_name = "Isource_A"
+        }
+        [
+            position = 6980, 7864
+            size = 64, 32
+        ]
+
+        component "core/Probe" Source_current_probe_A {
+        }
+        [
+            position = 6980, 7816
+            rotation = left
+        ]
+
+        component "core/Current Measurement" Source_current_B {
+            execution_rate = "1e-05"
+            override_signal_name = "True"
+            sig_output = "True"
+            signal_name = "Isource_B"
+        }
+        [
+            position = 6980, 7976
+            size = 64, 32
+        ]
+
+        component "core/Probe" Source_current_probe_B {
+        }
+        [
+            position = 6980, 7928
+            rotation = left
+        ]
+
+        component "core/Current Measurement" Source_current_C {
+            execution_rate = "1e-05"
+            override_signal_name = "True"
+            sig_output = "True"
+            signal_name = "Isource_C"
+        }
+        [
+            position = 6980, 8076
+            size = 64, 32
+        ]
+
+        component "core/Probe" Source_current_probe_C {
+        }
+        [
+            position = 6980, 8028
+            rotation = left
+        ]
+
+        component "core/Constant" OFF_IGBT2 {
+            execution_rate = "1e-05"
+            value = "0"
+        }
+        [
+            position = 7400, 7804
+        ]
+
+        component "core/Constant" OFF_IGBT4 {
+            execution_rate = "1e-05"
+            value = "0"
+        }
+        [
+            position = 7564, 7804
+        ]
+
+        component "core/Constant" OFF_IGBT6 {
+            execution_rate = "1e-05"
+            value = "0"
+        }
+        [
+            position = 7724, 7804
+        ]
+
+        component "core/Constant" OFF_IGBT7 {
+            execution_rate = "1e-05"
+            value = "0"
+        }
+        [
+            position = 7404, 8036
+        ]
+
+        component "core/Constant" OFF_IGBT9 {
+            execution_rate = "1e-05"
+            value = "0"
+        }
+        [
+            position = 7580, 8036
+        ]
+
+        component "core/Constant" OFF_IGBT11 {
+            execution_rate = "1e-05"
+            value = "0"
+        }
+        [
+            position = 7724, 8036
+        ]
+
+        component "core/C function" Simulink_grid {
+            arb_defs = "/*Begin code section*/
+
+/*End code section*/"
+            execution_rate = "1e-05"
+            global_variables = "uint grid_tick;"
+            init_fnc = "/*Begin code section*/
+grid_tick=0;
+/*End code section*/"
+            input_terminals = ""
+            input_terminals_dimensions = ""
+            input_terminals_feedthrough = ""
+            input_terminals_show_labels = ""
+            output_fnc = "/*Begin code section*/
+real t,pi,w,Vpk;
+real sag_percent,sag_start,sag_end;
+real harmonic_start,harmonic_end;
+real h5_percent,h7_percent,h5_angle_deg,h7_angle_deg;
+real scale,hon,A5,A7,phi5,phi7;
+real theta_a,theta_b,theta_c;
+
+/* ========== 可直接修改的参数 ========== */
+
+/* 基波参数 */
+Vpk=311.08519733346361;     /* 基波峰值，约对应220 V有效值 */
+
+/* 暂降参数：填暂降百分数，0表示无暂降 */
+sag_percent=0.0;           /* 例如40.0表示暂降40%，剩余60% */
+sag_start=0.2;             /* 暂降开始时间，单位s */
+sag_end=0.4;               /* 暂降结束时间，单位s */
+
+/* 谐波投入时间 */
+harmonic_start=0.2;        /* 单位s */
+harmonic_end=0.6;          /* 单位s */
+
+/* 谐波幅值：相对于暂降前基波幅值的百分数 */
+h5_percent=40.0;          /* 5次谐波；0表示不注入 */
+h7_percent=40.0;          /* 7次谐波；0表示不注入 */
+
+/* 谐波附加相角：直接填写角度 */
+h5_angle_deg=90.0;
+h7_angle_deg=270.0;
+
+/* ========== 以下为计算部分 ========== */
+
+pi=3.141592653589793;
+w=2.0*pi*50.0;            /* 基波频率50 Hz */
+/* t is time within each 0.6 s cycle: 0 <= t < 0.6. */
+t=grid_tick*1e-5;         /* 模块执行周期10 us */
+
+/* 暂降期间的基波幅值比例 */
+scale=(t>=sag_start && t<sag_end)
+      ?(1.0-sag_percent/100.0):1.0;
+
+/* 谐波注入使能 */
+hon=(t>=harmonic_start && t<harmonic_end)?1.0:0.0;
+
+/* 百分数转为谐波峰值，角度转为弧度 */
+A5=Vpk*h5_percent/100.0;
+A7=Vpk*h7_percent/100.0;
+phi5=h5_angle_deg*pi/180.0;
+phi7=h7_angle_deg*pi/180.0;
+
+/* 三相基波瞬时相角 */
+theta_a=w*t;
+theta_b=w*t-2.0*pi/3.0;
+theta_c=w*t+2.0*pi/3.0;
+
+/* 三相电压：基波＋5次谐波＋7次谐波 */
+va=Vpk*scale*sin(theta_a)
+   +hon*A5*sin(5.0*theta_a+phi5)
+   +hon*A7*sin(7.0*theta_a+phi7);
+
+vb=Vpk*scale*sin(theta_b)
+   +hon*A5*sin(5.0*theta_b+phi5)
+   +hon*A7*sin(7.0*theta_b+phi7);
+
+vc=Vpk*scale*sin(theta_c)
+   +hon*A5*sin(5.0*theta_c+phi5)
+   +hon*A7*sin(7.0*theta_c+phi7);
+/*End code section*/"
+            output_terminals = "real va;real vb;real vc;"
+            output_terminals_dimensions = "1;1;1"
+            output_terminals_feedthrough = "True;True;True"
+            output_terminals_show_labels = "False;False;False"
+            update_fnc = "/*Begin code section*/
+/* 0.6 s repeat period: 60000 ticks at 10 us per tick. */
+grid_tick++;
+if (grid_tick>=60000) {
+    grid_tick=0;
+}
+/*End code section*/"
+        }
+        [
+            position = 6484, 7972
+            size = 48, 64
+        ]
+
+        component "core/Voltage Measurement" Source_voltage_A {
+            execution_rate = "1e-05"
+            override_signal_name = "True"
+            sig_output = "True"
+            signal_name = "Vsource_A"
+        }
+        [
+            position = 6752, 7912
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Probe" Source_voltage_probe_A {
+            override_signal_name = "True"
+            signal_name = "V_grid_A"
+        }
+        [
+            position = 6804, 7912
+        ]
+
+        component "core/Voltage Measurement" Source_voltage_B {
+            execution_rate = "1e-05"
+            override_signal_name = "True"
+            sig_output = "True"
+            signal_name = "Vsource_B"
+        }
+        [
+            position = 6808, 8028
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Probe" Source_voltage_probe_B {
+            override_signal_name = "True"
+            signal_name = "V_grid_B"
+        }
+        [
+            position = 6868, 8028
+        ]
+
+        component "core/Voltage Measurement" Source_voltage_C {
+            execution_rate = "1e-05"
+            override_signal_name = "True"
+            sig_output = "True"
+            signal_name = "Vsource_C"
+        }
+        [
+            position = 6884, 8136
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Probe" Source_voltage_probe_C {
+            override_signal_name = "True"
+            signal_name = "V_grid_C"
+        }
+        [
+            position = 6944, 8136
+        ]
+
+        component Subsystem "Input Filter" {
+            layout = dynamic
+            component "core/Series RLC Branch" "Series RLC Branch1" {
+                branch_type = "L"
+                inductance = "0.0033"
+                num_phases = "Three-Phase"
+                resistance = "0"
+            }
+            [
+                position = 8288, 8296
+                size = 128, 256
+            ]
+
+            component "core/Series RLC Branch" "Parallel RLC Branch1" {
+                branch_type = "C"
+                capacitance = "4.7e-06"
+                num_phases = "Three-Phase"
+                resistance = "220"
+            }
+            [
+                position = 8544, 8572
+                rotation = right
+                size = 128, 256
+            ]
+
+            component "core/Series RLC Branch" Input_L_damping {
+                branch_type = "R"
+                num_phases = "Three-Phase"
+                resistance = "22"
+            }
+            [
+                position = 8288, 7992
+                size = 128, 256
+            ]
+
+            component "core/Series RLC Branch" Input_series_R {
+                branch_type = "R"
+                num_phases = "Three-Phase"
+                resistance = "0.2"
+            }
+            [
+                position = 8096, 8296
+                size = 128, 256
+            ]
+
+            port P1 {
+                position = left:1
+                kind = pe
+                direction =  in
+            }
+            [
+                position = 7984, 8200
+            ]
+
+            port P5 {
+                position = right:2
+                kind = pe
+                direction =  in
+            }
+            [
+                position = 8704, 8296
+                rotation = down
+            ]
+
+            port P3 {
+                position = left:3
+                kind = pe
+                direction =  in
+            }
+            [
+                position = 7984, 8392
+            ]
+
+            port P4 {
+                position = right:1
+                kind = pe
+                direction =  in
+            }
+            [
+                position = 8704, 8200
+                rotation = down
+            ]
+
+            port P6 {
+                position = right:3
+                kind = pe
+                direction =  in
+            }
+            [
+                position = 8704, 8392
+                rotation = down
+            ]
+
+            port P2 {
+                position = left:2
+                kind = pe
+                direction =  in
+            }
+            [
+                position = 7984, 8296
+            ]
+
+            junction Junction549 pe
+            [
+                position = 8428, 8200
+            ]
+
+            junction Junction550 pe
+            [
+                position = 8400, 8296
+            ]
+
+            junction Junction551 pe
+            [
+                position = 8376, 8392
+            ]
+
+            junction Junction552 pe
+            [
+                position = 8448, 8200
+            ]
+
+            junction Junction553 pe
+            [
+                position = 8544, 8296
+            ]
+
+            junction Junction554 pe
+            [
+                position = 8640, 8392
+            ]
+
+            junction Junction555 pe
+            [
+                position = 8544, 8644
+            ]
+
+            junction Junction546 pe
+            [
+                position = 8176, 8200
+            ]
+
+            junction Junction547 pe
+            [
+                position = 8176, 8296
+            ]
+
+            junction Junction548 pe
+            [
+                position = 8192, 8392
+            ]
+
+            connect Input_series_R.P3_pos P3 as Connection2622
+            connect Input_series_R.P1_pos P1 as Connection2620
+            connect Input_series_R.P2_pos P2 as Connection2628
+            connect "Series RLC Branch1.P1_neg" Junction549 as Connection2632
+            connect Input_L_damping.P1_neg Junction549 as Connection2634
+            [
+                breakpoints = 8424, 7896; 8424, 8200
+            ]
+            connect "Series RLC Branch1.P2_neg" Junction550 as Connection2635
+            connect Input_L_damping.P2_neg Junction550 as Connection2637
+            connect "Series RLC Branch1.P3_neg" Junction551 as Connection2638
+            connect Input_L_damping.P3_neg Junction551 as Connection2640
+            connect Junction549 Junction552 as Connection2641
+            connect Junction552 P4 as Connection2642
+            connect "Parallel RLC Branch1.P3_pos" Junction552 as Connection2643
+            connect Junction550 Junction553 as Connection2648
+            connect Junction553 P5 as Connection2649
+            connect "Parallel RLC Branch1.P2_pos" Junction553 as Connection2650
+            connect Junction551 Junction554 as Connection2651
+            connect Junction554 P6 as Connection2652
+            connect "Parallel RLC Branch1.P1_pos" Junction554 as Connection2653
+            connect "Parallel RLC Branch1.P3_neg" Junction555 as Connection2655
+            connect Junction555 "Parallel RLC Branch1.P1_neg" as Connection2656
+            connect "Parallel RLC Branch1.P2_neg" Junction555 as Connection2657
+            connect "Series RLC Branch1.P1_pos" Junction546 as Connection2611
+            connect Junction546 Input_series_R.P1_neg as Connection2612
+            connect Input_L_damping.P1_pos Junction546 as Connection2613
+            connect "Series RLC Branch1.P2_pos" Junction547 as Connection2614
+            connect Junction547 Input_series_R.P2_neg as Connection2615
+            connect Input_L_damping.P2_pos Junction547 as Connection2616
+            [
+                breakpoints = 8192, 7992; 8192, 8296
+            ]
+            connect "Series RLC Branch1.P3_pos" Junction548 as Connection2617
+            connect Junction548 Input_series_R.P3_neg as Connection2618
+            connect Input_L_damping.P3_pos Junction548 as Connection2619
+            [
+                breakpoints = 8208, 8088; 8208, 8392
+            ]
+        }
+        [
+            position = 7112, 7976
+            size = 48, 232
+        ]
+
+        component Subsystem "output filter" {
+            layout = dynamic
+            component "core/Series RLC Branch" "Series RLC Branch3" {
+                branch_type = "RL"
+                inductance = "0.05"
+                resistance = "0.5"
+            }
+            [
+                position = 8120, 8060
+                size = 128, 100
+            ]
+
+            component "core/Series RLC Branch" Output_filter_C {
+                branch_type = "C"
+                capacitance = "47e-6"
+                resistance = "0"
+            }
+            [
+                position = 8264, 8324
+                rotation = right
+                size = 128, 100
+            ]
+
+            port P1 {
+                position = right:1
+                kind = pe
+                direction =  out
+            }
+            [
+                position = 8312, 8060
+                rotation = down
+            ]
+
+            port P2 {
+                position = bottom:1
+                kind = pe
+                direction =  in
+            }
+            [
+                position = 8264, 8440
+                rotation = left
+            ]
+
+            port P3 {
+                position = left:1
+                kind = pe
+                direction =  in
+            }
+            [
+                position = 8008, 8060
+            ]
+
+            junction Junction551 pe
+            [
+                position = 8264, 8060
+            ]
+
+            connect Output_filter_C.P1_neg P2 as Connection2640
+            connect "Series RLC Branch3.P1_pos" P3 as Connection2641
+            connect Junction551 P1 as Connection2639
+            connect Junction551 "Series RLC Branch3.P1_neg" as Connection2637
+            connect Output_filter_C.P1_pos Junction551 as Connection2638
+        }
+        [
+            position = 8096, 7736
+            size = 48, 48
+        ]
+
+        junction Junction527 pe
+        [
+            position = 7648, 7736
+        ]
+
+        junction Junction530 pe
+        [
+            position = 7648, 8228
+        ]
+
+        junction Junction544 pe
+        [
+            position = 6620, 7976
+        ]
+
+        junction Junction545 pe
+        [
+            position = 6620, 8076
+        ]
+
+        junction Junction549 pe
+        [
+            position = 7816, 7736
+        ]
+
+        junction Junction550 pe
+        [
+            position = 7816, 8228
+        ]
+
+        junction Junction553 pe
+        [
+            position = 7864, 7736
+        ]
+
+        junction Junction554 pe
+        [
+            position = 7864, 8228
+        ]
+
+        junction Junction555 pe
+        [
+            position = 7932, 7736
+        ]
+
+        junction Junction556 pe
+        [
+            position = 7932, 8228
+        ]
+
+        junction Junction557 pe
+        [
+            position = 8244, 7996
+        ]
+
+        junction Junction559 pe
+        [
+            position = 6752, 7864
+        ]
+
+        junction Junction560 pe
+        [
+            position = 6620, 8112
+        ]
+
+        junction Junction561 pe
+        [
+            position = 6808, 7976
+        ]
+
+        junction Junction562 pe
+        [
+            position = 6620, 8144
+        ]
+
+        junction Junction563 pe
+        [
+            position = 6884, 8076
+        ]
+
+        junction Junction564 pe
+        [
+            position = 6620, 8168
+        ]
+
+        junction Junction565 pe
+        [
+            position = 7648, 7976
+        ]
+
+        junction Junction566 pe
+        [
+            position = 7480, 7960
+        ]
+
+        junction Junction567 pe
+        [
+            position = 7816, 7988
+        ]
+
+        junction Junction568 pe
+        [
+            position = 7176, 7880
+        ]
+
+        junction Junction569 pe
+        [
+            position = 6860, 8176
+        ]
+
+        junction Junction570 pe
+        [
+            position = 7216, 7976
+        ]
+
+        junction Junction571 pe
+        [
+            position = 7176, 8176
+        ]
+
+        junction Junction572 pe
+        [
+            position = 7280, 8072
+        ]
+
+        junction Junction573 pe
+        [
+            position = 7216, 8176
+        ]
+
+        junction Junction574 pe
+        [
+            position = 8096, 8228
+        ]
+
+        junction Junction575 pe
+        [
+            position = 8244, 8228
+        ]
+
+        comment Comment1 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><style type="text/css">p, li { white-space: pre-wrap; }</style></head><body style=" font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:20pt;">Rectifier</span></p></body></html> ENDCOMMENT 
+        [
+            position = 7564, 7688
+        ]
+
+        comment Comment2 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><style type="text/css">p, li { white-space: pre-wrap; }</style></head><body style=" font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:20pt;">DC Link</span></p></body></html> ENDCOMMENT 
+        [
+            position = 7856, 7684
+        ]
+
+        comment Comment4 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Arial'; font-size:20pt;">Grid </span><span style=" font-family:'Arial';"> </span> </p></body></html> ENDCOMMENT 
+        [
+            position = 6668, 7744
+        ]
+
+        connect Va.out Gain1.in as Connection1817
+        connect Gain2.in Vb.out as Connection1818
+        connect Gain3.in Vc.out as Connection1819
+        connect Gain1.out Probe1.in as Connection1820
+        connect Gain2.out Probe2.in as Connection1821
+        connect Gain3.out Probe3.in as Connection1822
+        connect Gain4.out Probe4.in as Connection2343
+        connect IGBT2.S IGBT15.S as Connection2401
+        connect IGBT4.S IGBT16.S as Connection2402
+        connect IGBT6.S IGBT17.S as Connection2403
+        connect IGBT7.S IGBT12.S as Connection2407
+        connect IGBT9.S IGBT13.S as Connection2408
+        connect IGBT11.S IGBT14.S as Connection2409
+        connect IGBT2.D Junction527 as Connection2413
+        connect IGBT4.D Junction527 as Connection2415
+        connect IGBT12.D Junction530 as Connection2422
+        connect IGBT13.D Junction530 as Connection2424
+        connect Gain5.out Probe5.in as Connection2460
+        connect Ia1.out Gain5.in as Connection2461
+        connect Load_current_sensor.out Load_current_probe.in as FilterConnection5
+        connect V_load_sensor.out Load_voltage_probe.in as Connection2542
+        connect VA_harmonic_source.n_node Junction544 as Connection2587
+        connect VB_harmonic_source.n_node Junction544 as Connection2589
+        connect Junction544 Junction545 as Connection2591
+        connect Junction545 VC_harmonic_source.n_node as Connection2592
+        connect "Input Filter.P2" Source_current_B.n_node as Connection2603
+        connect "Input Filter.P1" Source_current_A.n_node as Connection2604
+        connect "Input Filter.P3" Source_current_C.n_node as Connection2605
+        connect Source_current_A.out Source_current_probe_A.in as Connection2606
+        connect Source_current_probe_B.in Source_current_B.out as Connection2607
+        connect Source_current_probe_C.in Source_current_C.out as Connection2608
+        connect OFF_IGBT2.out IGBT2.ctrl_in as Connection2618
+        connect OFF_IGBT4.out IGBT4.ctrl_in as Connection2619
+        connect IGBT6.ctrl_in OFF_IGBT6.out as Connection2620
+        connect OFF_IGBT7.out IGBT7.ctrl_in as Connection2621
+        connect OFF_IGBT9.out IGBT9.ctrl_in as Connection2622
+        connect OFF_IGBT11.out IGBT11.ctrl_in as Connection2623
+        connect Gain4.in Vdc_raw_sensor.out as Connection2627
+        connect Junction527 Junction549 as Connection2628
+        connect Junction549 IGBT6.D as Connection2629
+        [
+            breakpoints = 7812, 7736
+        ]
+        connect Junction530 Junction550 as Connection2633
+        connect Junction550 IGBT14.D as Connection2634
+        [
+            breakpoints = 7816, 8228
+        ]
+        connect Load_current_sensor.p_node "output filter.P1" as Connection2645
+        connect "output filter.P3" Ia1.n_node as Connection2652
+        connect Junction553 Junction549 as Connection2655
+        connect DC_freewheel.K Junction553 as Connection2656
+        connect Junction554 Junction550 as Connection2658
+        connect DC_freewheel.A Junction554 as Connection2659
+        connect Ia1.p_node Junction555 as Connection2660
+        connect Junction555 Junction553 as Connection2661
+        connect Vdc_raw_sensor.p_node Junction555 as Connection2662
+        connect Junction556 Junction554 as Connection2664
+        connect Vdc_raw_sensor.n_node Junction556 as Connection2665
+        connect Load_current_sensor.n_node Junction557 as Connection2666
+        connect Junction557 R_load.P1_pos as Connection2667
+        connect V_load_sensor.p_node Junction557 as Connection2668
+        connect Source_current_A.p_node Junction559 as Connection2672
+        connect Junction559 VA_harmonic_source.p_node as Connection2673
+        connect Source_voltage_A.p_node Junction559 as Connection2674
+        connect Junction560 Junction545 as Connection2677
+        connect Source_voltage_A.n_node Junction560 as Connection2678
+        connect Source_current_B.p_node Junction561 as Connection2679
+        connect Junction561 VB_harmonic_source.p_node as Connection2680
+        connect Source_voltage_B.p_node Junction561 as Connection2681
+        connect Junction562 Junction560 as Connection2683
+        connect Source_voltage_B.n_node Junction562 as Connection2684
+        connect Source_current_C.p_node Junction563 as Connection2685
+        connect Junction563 VC_harmonic_source.p_node as Connection2686
+        connect Source_voltage_C.p_node Junction563 as Connection2687
+        connect gnd1.node Junction564 as Connection2688
+        connect Junction564 Junction562 as Connection2689
+        connect Source_voltage_probe_A.in Source_voltage_A.out as Connection2691
+        connect Source_voltage_probe_B.in Source_voltage_B.out as Connection2692
+        connect Source_voltage_probe_C.in Source_voltage_C.out as Connection2693
+        connect Simulink_grid.va VA_harmonic_source.in as Connection2694
+        [
+            breakpoints = 6548, 7956; 6548, 7816; 6668, 7816
+        ]
+        connect Simulink_grid.vb VB_harmonic_source.in as Connection2695
+        [
+            breakpoints = 6584, 7972; 6584, 7940; 6668, 7940
+        ]
+        connect Simulink_grid.vc VC_harmonic_source.in as Connection2696
+        [
+            breakpoints = 6548, 7988; 6548, 8052
+        ]
+        connect IGBT16.D Junction565 as Connection2703
+        connect Junction565 IGBT9.D as Connection2704
+        connect IGBT15.D Junction566 as Connection2706
+        connect Junction566 IGBT7.D as Connection2707
+        connect IGBT11.D Junction567 as Connection2709
+        connect Junction567 IGBT17.D as Connection2710
+        connect "Input Filter.P4" Junction568 as Connection2712
+        connect Junction568 Junction566 as Connection2713
+        [
+            breakpoints = 7368, 7880; 7368, 7960
+        ]
+        connect Va.p_node Junction568 as Connection2714
+        connect Source_voltage_C.n_node Junction569 as Connection2715
+        connect Junction569 Junction564 as Connection2716
+        connect "Input Filter.P5" Junction570 as Connection2718
+        connect Junction570 Junction565 as Connection2719
+        connect Vb.p_node Junction570 as Connection2720
+        connect Va.n_node Junction571 as Connection2721
+        connect Junction571 Junction569 as Connection2722
+        connect "Input Filter.P6" Junction572 as Connection2724
+        connect Junction572 Junction567 as Connection2725
+        [
+            breakpoints = 7368, 8072; 7368, 7988
+        ]
+        connect Vc.p_node Junction572 as Connection2726
+        connect Vb.n_node Junction573 as Connection2727
+        connect Junction573 Junction571 as Connection2728
+        connect Vc.n_node Junction573 as Connection2729
+        connect Junction556 Junction574 as Connection2731
+        connect Junction574 "output filter.P2" as Connection2732
+        [
+            breakpoints = 8096, 8228; 8096, 7904
+        ]
+        connect R_load.P1_neg Junction575 as Connection2734
+        connect Junction575 Junction574 as Connection2735
+        connect V_load_sensor.n_node Junction575 as Connection2736
+    }
+
+    default {
+        "core/C function" {
+            input_terminals = "real in;"
+            input_terminals_show_labels = "False;"
+            input_terminals_feedthrough = "True;"
+            input_terminals_dimensions = "inherit;"
+            output_terminals = "real out;"
+            output_terminals_show_labels = "False;"
+            output_terminals_feedthrough = "True;"
+            output_terminals_dimensions = "inherit;"
+            output_fnc = ""
+            update_fnc = ""
+            init_fnc = ""
+            global_variables = ""
+            parameters = ""
+            library_load_type = "Compile-time load"
+            dll_file_path = ""
+            dll_file_path_full = ""
+            arm_a9_file_path = ""
+            arm_a9_file_path_full = ""
+            arm_a53_file_path = ""
+            arm_a53_file_path_full = ""
+            h_file_path = ""
+            h_file_path_full = ""
+            add_src_path = ""
+            add_src_path_full = ""
+            convert_to_relative_dll = "True"
+            convert_to_relative_a = "True"
+            convert_to_relative_src = "True"
+            arb_defs = ""
+            add_macros = ""
+            skip_pre_cmpl_check = "False"
+            generate_for_hil = "True"
+            execution_rate = "inherit"
+            _supported_platforms = "[\'generic\']"
+            refresh = "refresh"
+        }
+
+        "core/Constant" {
+            value = "1"
+            signal_type = "real"
+            execution_rate = "100e-6"
+            _tunable = "False"
+        }
+
+        "core/Gain" {
+            gain = "1"
+            multiplication = "Element-wise(K.*u)"
+            force_tml = "True"
+            _tunable = "False"
+            execution_rate = "inherit"
+        }
+
+        "core/Initial Settings" {
+            analog_outputs = "[]"
+            digital_outputs = "[]"
+            hil_id = "0"
+            overridable_switches_dict = "{}"
+            signal = ""
+            model_load_legacy = "0"
+        }
+
+        "core/Probe" {
+            signal_access = "inherit"
+            addr = "0"
+            override_signal_name = "False"
+            signal_name = ""
+            signal_type = "generic"
+            streaming_en = "False"
+            streaming_er_idx = "0"
+            execution_rate = "inherit"
+        }
+
+        "core/Current Measurement" {
+            signal_access = "inherit"
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            sig_output_filt_and_full_bw = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+
+        "core/Diode" {
+            signal_access = "inherit"
+            switches_names_at_mask = "[]"
+            switches_names_at_mask_previous = "[]"
+            switches_option = "False"
+            resistance = "1.0"
+            snb_type = "none"
+            R = "100e3"
+            C = "1e-6"
+            show_monitoring = "False"
+            losses_estimation = "False"
+            load_xml_en = "User tables"
+            Import_diode_xml = "not selected"
+            xml_data = "{}"
+            diode_data = "{\'package_class\': \'Diode\', \'variables\': {}, \'constants\': {}, \'custom_tables\': {}, \'turn_on_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 400.0, 800.0, 1200.0], \'voltage_axis\': [0.0, 1800.0], \'temperature_axis\': [25.0, 125.0], \'energy\': [[[0.0, 0.0, 0.0, 0.0], [0.0, 0.4068, 1.001, 1.822]], [[0.0, 0.0, 0.0, 0.0], [0.0, 0.6317, 1.38, 1.784]]], \'parsed_formula\': \'E_turn_on_losses\'}, \'turn_off_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 400.0, 800.0, 1200.0], \'voltage_axis\': [0.0, 1800.0], \'temperature_axis\': [25.0, 125.0], \'energy\': [[[0.0, 0.0, 0.0, 0.0], [0.0, 0.6, 0.88, 1.177]], [[0.0, 0.0, 0.0, 0.0], [0.0, 0.9094, 1.25, 1.784]]], \'parsed_formula\': \'E_turn_off_losses\'}, \'conduction_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 100.0, 200.0, 400.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 1200.0, 1400.0, 1600.0], \'temperature_axis\': [25.0, 125.0], \'voltage_drop\': [[0.0, 1.5, 1.8, 2.3, 2.69, 2.9, 3.1, 3.25, 3.41, 3.73, 4.0, 4.31], [0.0, 1.63, 2.09, 2.77, 3.37, 3.63, 3.8, 4.11, 4.37, 4.81, 5.29, 5.7]], \'parsed_formula\': \'v_conduction_losses\'}, \'c_function_code\': {\'output_fnc\': \'E_turn_on_losses = lookup3d(turn_on_losses_table, i, v, T, current_axis_turn_on_losses, voltage_axis_turn_on_losses, temperature_axis_turn_on_losses, 4, 2, 2);\nE_turn_off_losses = lookup3d(turn_off_losses_table, i, v, T,current_axis_turn_off_losses, voltage_axis_turn_off_losses, temperature_axis_turn_off_losses, 4, 2, 2);\nv_conduction_losses = lookup2d(conduction_losses_table, i, T,current_axis_conduction_losses, temperature_axis_conduction_losses, 12, 2);\ne_t_on = E_turn_on_losses;\ne_t_off = E_turn_off_losses;\nv_ce = v_conduction_losses;\n\', \'arb_defs\': \'real current_axis_turn_off_losses[4] = { 0.0, 400.0, 800.0, 1200.0 };\nreal voltage_axis_turn_off_losses[2] = { 0.0, 1800.0 };\nreal temperature_axis_turn_off_losses[2] = { 25.0, 125.0 };\nreal E_turn_off_losses;\nreal turn_off_losses_table[16] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.88, 1.177, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9094, 1.25, 1.784 };\nreal current_axis_conduction_losses[12] = { 0.0, 100.0, 200.0, 400.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 1200.0, 1400.0, 1600.0 };\nreal temperature_axis_conduction_losses[2] = { 25.0, 125.0 };\nreal v_conduction_losses;\nreal conduction_losses_table[24] = { 0.0, 1.5, 1.8, 2.3, 2.69, 2.9, 3.1, 3.25, 3.41, 3.73, 4.0, 4.31, 0.0, 1.63, 2.09, 2.77, 3.37, 3.63, 3.8, 4.11, 4.37, 4.81, 5.29, 5.7 };\nreal current_axis_turn_on_losses[4] = { 0.0, 400.0, 800.0, 1200.0 };\nreal voltage_axis_turn_on_losses[2] = { 0.0, 1800.0 };\nreal temperature_axis_turn_on_losses[2] = { 25.0, 125.0 };\nreal E_turn_on_losses;\nreal turn_on_losses_table[16] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.4068, 1.001, 1.822, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6317, 1.38, 1.784 };\n\'}}"
+            transistor_data = "{\'package_class\': \'IGBT\', \'variables\': {}, \'constants\': {}, \'custom_tables\': {}, \'turn_on_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 400.0, 800.0, 1200.0], \'voltage_axis\': [0.0, 1800.0], \'temperature_axis\': [25.0, 125.0], \'energy\': [[[0.0, 0.0, 0.0, 0.0], [0.0, 0.4068, 1.001, 1.822]], [[0.0, 0.0, 0.0, 0.0], [0.0, 0.6317, 1.38, 1.784]]], \'parsed_formula\': \'E_turn_on_losses\'}, \'turn_off_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 400.0, 800.0, 1200.0], \'voltage_axis\': [0.0, 1800.0], \'temperature_axis\': [25.0, 125.0], \'energy\': [[[0.0, 0.0, 0.0, 0.0], [0.0, 0.6, 0.88, 1.177]], [[0.0, 0.0, 0.0, 0.0], [0.0, 0.9094, 1.25, 1.784]]], \'parsed_formula\': \'E_turn_off_losses\'}, \'conduction_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 100.0, 200.0, 400.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 1200.0, 1400.0, 1600.0], \'temperature_axis\': [25.0, 125.0], \'voltage_drop\': [[0.0, 1.5, 1.8, 2.3, 2.69, 2.9, 3.1, 3.25, 3.41, 3.73, 4.0, 4.31], [0.0, 1.63, 2.09, 2.77, 3.37, 3.63, 3.8, 4.11, 4.37, 4.81, 5.29, 5.7]], \'parsed_formula\': \'v_conduction_losses\'}, \'c_function_code\': {\'output_fnc\': \'E_turn_on_losses = lookup3d(turn_on_losses_table, i, v, T, current_axis_turn_on_losses, voltage_axis_turn_on_losses, temperature_axis_turn_on_losses, 4, 2, 2);\nE_turn_off_losses = lookup3d(turn_off_losses_table, i, v, T,current_axis_turn_off_losses, voltage_axis_turn_off_losses, temperature_axis_turn_off_losses, 4, 2, 2);\nv_conduction_losses = lookup2d(conduction_losses_table, i, T,current_axis_conduction_losses, temperature_axis_conduction_losses, 12, 2);\ne_t_on = E_turn_on_losses;\ne_t_off = E_turn_off_losses;\nv_ce = v_conduction_losses;\n\', \'arb_defs\': \'real current_axis_turn_off_losses[4] = { 0.0, 400.0, 800.0, 1200.0 };\nreal voltage_axis_turn_off_losses[2] = { 0.0, 1800.0 };\nreal temperature_axis_turn_off_losses[2] = { 25.0, 125.0 };\nreal E_turn_off_losses;\nreal turn_off_losses_table[16] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.88, 1.177, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9094, 1.25, 1.784 };\nreal current_axis_conduction_losses[12] = { 0.0, 100.0, 200.0, 400.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 1200.0, 1400.0, 1600.0 };\nreal temperature_axis_conduction_losses[2] = { 25.0, 125.0 };\nreal v_conduction_losses;\nreal conduction_losses_table[24] = { 0.0, 1.5, 1.8, 2.3, 2.69, 2.9, 3.1, 3.25, 3.41, 3.73, 4.0, 4.31, 0.0, 1.63, 2.09, 2.77, 3.37, 3.63, 3.8, 4.11, 4.37, 4.81, 5.29, 5.7 };\nreal current_axis_turn_on_losses[4] = { 0.0, 400.0, 800.0, 1200.0 };\nreal voltage_axis_turn_on_losses[2] = { 0.0, 1800.0 };\nreal temperature_axis_turn_on_losses[2] = { 25.0, 125.0 };\nreal E_turn_on_losses;\nreal turn_on_losses_table[16] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.4068, 1.001, 1.822, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6317, 1.38, 1.784 };\n\'}}"
+            user_vars_diode = "User variables diode"
+            Vd = "1.2"
+            Rd = "0"
+            i_sw = "[0.0, 6.0, 12.0, 18.0, 24.0]"
+            v_sw = "[0.0, 600.0]"
+            temp_sw = "[25.0, 50.0, 75.0, 100.0, 125.0]"
+            vd_table_out = "[1.2, 1.2, 1.2, 1.2, 1.2]"
+            ed_off_table_out = "[[0.0, 0.0275e-3, 0.15e-3, 0.275e-3, 0.3e-3], [0.35*2.2e-3, 0.4*2.2e-3, 0.8*2.2e-3, 0.68*2.2e-3, 0.9*2.2e-3], [0.65*2.2e-3, 0.9*2.2e-3, 1.2*2.2e-3, 1.5*2.2e-3, 1.7*2.2e-3], [0.9*2.2e-3, 1.3*2.2e-3, 1.7*2.2e-3, 1.9*2.2e-3, 2.25*2.2e-3], [1.1*2.2e-3, 1.7*2.2e-3, 2.1*2.2e-3, 2.3*2.2e-3, 2.5*2.2e-3]]"
+            load_switching_data_from_xml = "Import losses data from xml files"
+            temp_estimation = "False"
+            thermal_networks_type = "Foster"
+            diode_Rth = "[0.159, 0.133, 0.120, 0.038]"
+            diode_Tth = "[1.1e-1, 1.56e-2, 1.35e-3, 1.51e-4]"
+            diode_Cth = "[0.0029, 0.0097, 0.1068, 0.8500]"
+            loss_exec_rate = "100e-6"
+            dtsm_switch_name = ""
+            model_load_legacy = "0"
+        }
+
+        "core/IGBT" {
+            signal_access = "inherit"
+            switches_option = "False"
+            resistance = "1.0"
+            ctrl_src = "Digital inputs"
+            dtsm_switch_name = ""
+            dtsm_switch_ctrl = ""
+            op_mode = "Fixed carrier frequency"
+            carrier_freq = "10000.0"
+            carr_ph_offset = "0.0"
+            d_time = "5e-6"
+            ref_sig_min_max = "[-1.0, 1.0]"
+            load_mode = "on min"
+            S1 = "1"
+            S1_logic = "active high"
+            execution_rate = "inherit"
+            snb_type = "none"
+            R = "100e3"
+            C = "1e-6"
+            spc_nb = "0"
+            addr = "0"
+            show_monitoring = "False"
+            switches_names_at_mask = "[\'S1\']"
+            switches_names_at_mask_previous = "[\'S1\']"
+            pwm_enabling = "False"
+            pwm_enable_di = "13"
+            pwm_enable_inv = "active high"
+            model_load_legacy = "0"
+            losses_estimation = "False"
+            load_xml_en = "User tables"
+            Import_igbt_xml = "not selected"
+            Import_diode_xml = "not selected"
+            xml_data = "{}"
+            transistor_data = "{\'package_class\': \'IGBT\', \'variables\': {}, \'constants\': {}, \'custom_tables\': {}, \'turn_on_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 400.0, 800.0, 1200.0], \'voltage_axis\': [0.0, 1800.0], \'temperature_axis\': [25.0, 125.0], \'energy\': [[[0.0, 0.0, 0.0, 0.0], [0.0, 0.4068, 1.001, 1.822]], [[0.0, 0.0, 0.0, 0.0], [0.0, 0.6317, 1.38, 1.784]]], \'parsed_formula\': \'E_turn_on_losses\'}, \'turn_off_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 400.0, 800.0, 1200.0], \'voltage_axis\': [0.0, 1800.0], \'temperature_axis\': [25.0, 125.0], \'energy\': [[[0.0, 0.0, 0.0, 0.0], [0.0, 0.6, 0.88, 1.177]], [[0.0, 0.0, 0.0, 0.0], [0.0, 0.9094, 1.25, 1.784]]], \'parsed_formula\': \'E_turn_off_losses\'}, \'conduction_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 100.0, 200.0, 400.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 1200.0, 1400.0, 1600.0], \'temperature_axis\': [25.0, 125.0], \'voltage_drop\': [[0.0, 1.5, 1.8, 2.3, 2.69, 2.9, 3.1, 3.25, 3.41, 3.73, 4.0, 4.31], [0.0, 1.63, 2.09, 2.77, 3.37, 3.63, 3.8, 4.11, 4.37, 4.81, 5.29, 5.7]], \'parsed_formula\': \'v_conduction_losses\'}, \'c_function_code\': {\'output_fnc\': \'E_turn_on_losses = lookup3d(turn_on_losses_table, i, v, T, current_axis_turn_on_losses, voltage_axis_turn_on_losses, temperature_axis_turn_on_losses, 4, 2, 2);\nE_turn_off_losses = lookup3d(turn_off_losses_table, i, v, T,current_axis_turn_off_losses, voltage_axis_turn_off_losses, temperature_axis_turn_off_losses, 4, 2, 2);\nv_conduction_losses = lookup2d(conduction_losses_table, i, T,current_axis_conduction_losses, temperature_axis_conduction_losses, 12, 2);\ne_t_on = E_turn_on_losses;\ne_t_off = E_turn_off_losses;\nv_ce = v_conduction_losses;\n\', \'arb_defs\': \'real current_axis_turn_off_losses[4] = { 0.0, 400.0, 800.0, 1200.0 };\nreal voltage_axis_turn_off_losses[2] = { 0.0, 1800.0 };\nreal temperature_axis_turn_off_losses[2] = { 25.0, 125.0 };\nreal E_turn_off_losses;\nreal turn_off_losses_table[16] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.88, 1.177, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9094, 1.25, 1.784 };\nreal current_axis_conduction_losses[12] = { 0.0, 100.0, 200.0, 400.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 1200.0, 1400.0, 1600.0 };\nreal temperature_axis_conduction_losses[2] = { 25.0, 125.0 };\nreal v_conduction_losses;\nreal conduction_losses_table[24] = { 0.0, 1.5, 1.8, 2.3, 2.69, 2.9, 3.1, 3.25, 3.41, 3.73, 4.0, 4.31, 0.0, 1.63, 2.09, 2.77, 3.37, 3.63, 3.8, 4.11, 4.37, 4.81, 5.29, 5.7 };\nreal current_axis_turn_on_losses[4] = { 0.0, 400.0, 800.0, 1200.0 };\nreal voltage_axis_turn_on_losses[2] = { 0.0, 1800.0 };\nreal temperature_axis_turn_on_losses[2] = { 25.0, 125.0 };\nreal E_turn_on_losses;\nreal turn_on_losses_table[16] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.4068, 1.001, 1.822, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6317, 1.38, 1.784 };\n\'}}"
+            diode_data = "{\'package_class\': \'Diode\', \'variables\': {}, \'constants\': {}, \'custom_tables\': {}, \'turn_on_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 400.0, 800.0, 1200.0], \'voltage_axis\': [0.0, 1800.0], \'temperature_axis\': [25.0, 125.0], \'energy\': [[[0.0, 0.0, 0.0, 0.0], [0.0, 0.4068, 1.001, 1.822]], [[0.0, 0.0, 0.0, 0.0], [0.0, 0.6317, 1.38, 1.784]]], \'parsed_formula\': \'E_turn_on_losses\'}, \'turn_off_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 400.0, 800.0, 1200.0], \'voltage_axis\': [0.0, 1800.0], \'temperature_axis\': [25.0, 125.0], \'energy\': [[[0.0, 0.0, 0.0, 0.0], [0.0, 0.6, 0.88, 1.177]], [[0.0, 0.0, 0.0, 0.0], [0.0, 0.9094, 1.25, 1.784]]], \'parsed_formula\': \'E_turn_off_losses\'}, \'conduction_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 100.0, 200.0, 400.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 1200.0, 1400.0, 1600.0], \'temperature_axis\': [25.0, 125.0], \'voltage_drop\': [[0.0, 1.5, 1.8, 2.3, 2.69, 2.9, 3.1, 3.25, 3.41, 3.73, 4.0, 4.31], [0.0, 1.63, 2.09, 2.77, 3.37, 3.63, 3.8, 4.11, 4.37, 4.81, 5.29, 5.7]], \'parsed_formula\': \'v_conduction_losses\'}, \'c_function_code\': {\'output_fnc\': \'E_turn_on_losses = lookup3d(turn_on_losses_table, i, v, T, current_axis_turn_on_losses, voltage_axis_turn_on_losses, temperature_axis_turn_on_losses, 4, 2, 2);\nE_turn_off_losses = lookup3d(turn_off_losses_table, i, v, T,current_axis_turn_off_losses, voltage_axis_turn_off_losses, temperature_axis_turn_off_losses, 4, 2, 2);\nv_conduction_losses = lookup2d(conduction_losses_table, i, T,current_axis_conduction_losses, temperature_axis_conduction_losses, 12, 2);\ne_t_on = E_turn_on_losses;\ne_t_off = E_turn_off_losses;\nv_ce = v_conduction_losses;\n\', \'arb_defs\': \'real current_axis_turn_off_losses[4] = { 0.0, 400.0, 800.0, 1200.0 };\nreal voltage_axis_turn_off_losses[2] = { 0.0, 1800.0 };\nreal temperature_axis_turn_off_losses[2] = { 25.0, 125.0 };\nreal E_turn_off_losses;\nreal turn_off_losses_table[16] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.88, 1.177, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9094, 1.25, 1.784 };\nreal current_axis_conduction_losses[12] = { 0.0, 100.0, 200.0, 400.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 1200.0, 1400.0, 1600.0 };\nreal temperature_axis_conduction_losses[2] = { 25.0, 125.0 };\nreal v_conduction_losses;\nreal conduction_losses_table[24] = { 0.0, 1.5, 1.8, 2.3, 2.69, 2.9, 3.1, 3.25, 3.41, 3.73, 4.0, 4.31, 0.0, 1.63, 2.09, 2.77, 3.37, 3.63, 3.8, 4.11, 4.37, 4.81, 5.29, 5.7 };\nreal current_axis_turn_on_losses[4] = { 0.0, 400.0, 800.0, 1200.0 };\nreal voltage_axis_turn_on_losses[2] = { 0.0, 1800.0 };\nreal temperature_axis_turn_on_losses[2] = { 25.0, 125.0 };\nreal E_turn_on_losses;\nreal turn_on_losses_table[16] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.4068, 1.001, 1.822, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6317, 1.38, 1.784 };\n\'}}"
+            user_vars_transistor = "User variables transistor"
+            user_vars_diode = "User variables diode"
+            i_sw = "[0.0, 6.0, 12.0, 18.0, 24.0]"
+            v_sw = "[0.0, 600.0]"
+            temp_sw = "[25.0, 50.0, 75.0, 100.0, 125.0]"
+            vce_table_out = "[1.3, 1.3, 1.3, 1.3, 1.3]"
+            vd_table_out = "[1.2, 1.2, 1.2, 1.2, 1.2]"
+            et_on_table_out = "[[0.0, 0.0275e-3, 0.15e-3, 0.275e-3, 0.3e-3], [0.35*3.8e-3, 0.4*3.8e-3, 0.8*3.8e-3, 0.68*3.8e-3, 0.9*3.8e-3], [0.65*3.8e-3, 0.9*3.8e-3, 1.2*3.8e-3, 1.5*3.8e-3, 1.7*3.8e-3], [0.9*3.8e-3, 1.3*3.8e-3, 1.7*3.8e-3, 1.9*3.8e-3, 2.25*3.8e-3], [1.1*3.8e-3, 1.7*3.8e-3, 2.1*3.8e-3, 2.3*3.8e-3, 2.5*3.8e-3]]"
+            et_off_table_out = "[[0.0, 0.0275e-3, 0.15e-3, 0.275e-3, 0.3e-3], [0.35*2.1e-3, 0.4*2.1e-3, 0.8*2.1e-3, 0.68*2.1e-3, 0.9*2.1e-3], [0.65*2.1e-3, 0.9*2.1e-3, 1.2*2.1e-3, 1.5*2.1e-3, 1.7*2.1e-3], [0.9*2.1e-3, 1.3*2.1e-3, 1.7*2.1e-3, 1.9*2.1e-3, 2.25*2.1e-3], [1.1*2.1e-3, 1.7*2.1e-3, 2.1*2.1e-3, 2.3*2.1e-3, 2.5*2.1e-3]]"
+            ed_off_table_out = "[[0.0, 0.0275e-3, 0.15e-3, 0.275e-3, 0.3e-3], [0.35*2.2e-3, 0.4*2.2e-3, 0.8*2.2e-3, 0.68*2.2e-3, 0.9*2.2e-3], [0.65*2.2e-3, 0.9*2.2e-3, 1.2*2.2e-3, 1.5*2.2e-3, 1.7*2.2e-3], [0.9*2.2e-3, 1.3*2.2e-3, 1.7*2.2e-3, 1.9*2.2e-3, 2.25*2.2e-3], [1.1*2.2e-3, 1.7*2.2e-3, 2.1*2.2e-3, 2.3*2.2e-3, 2.5*2.2e-3]]"
+            load_switching_data_from_xml = "Import losses data from xml files"
+            temp_estimation = "False"
+            thermal_networks_type = "Foster"
+            switch_Rth = "[0.159, 0.133, 0.120, 0.038]"
+            switch_Tth = "[1.1e-1, 1.56e-2, 1.35e-3, 1.51e-4]"
+            switch_Cth = "[0.0029, 0.0097, 0.1068, 0.8500]"
+            diode_Rth = "[0.159, 0.133, 0.120, 0.038]"
+            diode_Tth = "[1.1e-1, 1.56e-2, 1.35e-3, 1.51e-4]"
+            diode_Cth = "[0.0029, 0.0097, 0.1068, 0.8500]"
+            loss_exec_rate = "100e-6"
+        }
+
+        "core/Series RLC Branch" {
+            num_phases = "Single-Phase"
+            branch_type = "RLC"
+            resistance = "10"
+            inductance = "10e-3"
+            initial_current = "0"
+            capacitance = "10e-6"
+            initial_voltage = "0"
+        }
+
+        "core/Signal Controlled Voltage Source" {
+            execution_rate = "inherit"
+        }
+
+        "core/Voltage Measurement" {
+            signal_access = "inherit"
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            sig_output_filt_and_full_bw = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+    }
+
+    CODE model_init
+        # Numpy module is imported as 'np'
+        # Scipy module is imported as 'sp'
+        
+        Pnom = 20000.0; 
+        Vdc_nominal = 800.0;
+        
+        Vbreak_on = Vdc_nominal + 150.0
+        Vbreak_off = Vdc_nominal 
+        break_status_time = 1.0
+        
+        Rbrk =  Vdc_nominal*Vdc_nominal/(1.0*Pnom)
+        
+        Vg1rms = 230.0;
+        Lg1 = 20e-6;
+        Rg1 = 10e-3;
+        f1 = 50.0;
+        fsw = 10000.0;
+        Ilpp = 0.1*Pnom/Vg1rms;
+        a = 10.0; # ripple attenuation
+        
+        ffast = 1.0*fsw
+        Tfast = 1.0/ffast
+        
+        Rdc = Vdc_nominal*Vdc_nominal/Pnom
+        
+        R1 = Vg1rms*Vg1rms / (500*Pnom) / 3.0; # 0.5% of the loss in inductor
+        L1 = 3.0*1.41*Vg1rms / (2*Vdc_nominal) * ((2.0/3.0*Vdc_nominal - 1.41*Vg1rms) / (Ilpp*fsw))
+        Cf1 = (a+1)/(4*np.pi*np.pi*fsw*fsw*Lg1)
+        C_dc = 100e-10*Pnom
+        R_dump = 1.0/(20.0*np.pi*f1*Cf1)*10000.0/Pnom
+        
+        p = -0.135*10.0;
+        i = -0.004/2.0;
+        
+        Kp_i = 2*L1*fsw*p / Vdc_nominal / 2.0
+        Ki_i = 2*L1*fsw*i / Vdc_nominal / 2.0
+        
+        Tsw = 1/fsw
+        
+        
+        Vg2rms = 230.0;
+        Lg2 = 20e-6;
+        Rg2 = 10e-3;
+        f2 = 50.0;
+        fsw2 = 10000.0;
+        Il2pp = 0.1*Pnom/Vg2rms;
+        a2 = 10.0; # ripple attenuation
+        
+        R2 = Vg2rms*Vg2rms / (500*Pnom) / 3.0; # 0.5% of the loss in inductor
+        L2 = 3.0*1.41*Vg2rms / (2*Vdc_nominal) * ((2.0/3.0*Vdc_nominal - 1.41*Vg2rms) / (Il2pp*fsw2))
+        Cf2 = (a2+1)/(4*np.pi*np.pi*fsw2*fsw2*Lg2)
+        
+        R_dump2 = 1.0/(20.0*np.pi*f2*Cf2)*10000.0/Pnom
+        
+        Tsw2 = 1/fsw2
+        Tslow = 1e-3
+        
+        p_v = 0.2403
+        i_v = 0.0549
+        
+        # Kp_v = 0.197
+        # Ki_v = 0.045
+        Kp_v = 4*p_v / (1.5*Vg2rms*1.41*Tslow)
+        Ki_v = 4*i_v / (1.5*Vg2rms*1.41*Tslow)
+        
+        Imax = Pnom/Vg2rms/3.0 * 1.41 * 2.0
+    ENDCODE
+}

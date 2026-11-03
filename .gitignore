@@ -1,0 +1,21 @@
+# ===== CCS 构建输出目录（每次编译重新生成，不入库）=====
+CPU1_LAUNCHXL_FLASH/
+
+# ===== 散落在源码树里的生成文件 =====
+*.obj
+*.d
+*.out
+*.map
+*.opt
+*_linkInfo.xml
+ccsObjs.opt
+
+# ===== clangd / IDE 索引缓存 =====
+.clangd/.cache/
+.cache/
+*.idx
+
+# ===== 系统杂项 =====
+Thumbs.db
+desktop.ini
+.DS_Store

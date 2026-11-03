@@ -1,0 +1,29 @@
+/* CLA Task1：执行解析初始化的3->6->12->6稀疏ReLU FNN，36个非零权重。
+ * 这是代数融合实现，不是早期训练的400权重网络；无需在CLA加载大权重矩阵。
+ * 六输出概念顺序为AB、AC、BA、BC、CA、CB：AB=min(ReLU(uA),ReLU(-uB))。
+ * 利用网络对正比例缩放的齐次性，先处理未归一化电压，CPU再按50*m/幅值缩放。
+ * 本任务同时做去零序、幅值平方和合法矢量对选择，减少CPU的消息RAM读取次数。
+ */
+extern volatile float g_claInput[4];
+extern volatile float g_claOutput[7];
+#pragma CODE_SECTION(ClaFnnTask,"Cla1Prog")
+__interrupt void ClaFnnTask(void){
+ float a=g_claInput[0],b=g_claInput[1],c=g_claInput[2];
+ float mean=(a+b+c)*(1.0f/3.0f);a-=mean;b-=mean;c-=mean;
+ float pa=a>0?a:0,pb=b>0?b:0,pc=c>0?c:0;
+ float na=a<0?-a:0,nb=b<0?-b:0,nc=c<0?-c:0;
+ /* Algebraically fused 3->6->12->6 ReLU network, 36 nonzero weights. */
+ float d0=pa<nb?pa:nb,d1=pa<nc?pa:nc;
+ float d2=pb<na?pb:na,d3=pb<nc?pb:nc;
+ float d4=pc<na?pc:na,d5=pc<nb?pc:nb;
+ float best=d0+d1,z,g=0,r1=d0,r2=d1;
+ z=d2+d4;if(z>best){best=z;g=1;r1=d2;r2=d4;}
+ z=d2+d3;if(z>best){best=z;g=2;r1=d2;r2=d3;}
+ z=d0+d5;if(z>best){best=z;g=3;r1=d0;r2=d5;}
+ z=d4+d5;if(z>best){best=z;g=4;r1=d4;r2=d5;}
+ z=d1+d3;if(z>best){g=5;r1=d1;r2=d3;}
+ g_claOutput[0]=r1;g_claOutput[1]=r2;g_claOutput[2]=g;
+ g_claOutput[3]=(2.0f/3.0f)*(a*a+b*b+c*c);
+ /* 最后发布序号：前面的结果均已写好；CPU按序号判断本帧是否完成。 */
+ g_claOutput[6]=g_claInput[3];
+}
